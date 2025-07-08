@@ -1,3 +1,4 @@
+"use client"
 import {useForm} from "react-hook-form";
 import axios from "axios";
 
@@ -20,6 +21,9 @@ function page() {
 
         formData.append("orgchart-file" , data.file[0])
 
+        console.log("\n\n this is formData instance of FormData after appending \n");
+        console.log(formData);
+
         try{
             const res = await axios.post("/api/backend" , formData);
             
@@ -32,10 +36,10 @@ function page() {
     }
 
   return (
-    <div className="bg-amber-300 m-auto , w-lg , h-32">
-        <form onSubmit = { handleSubmit(onSubmit) } >
-            <input type="file" accept=".csv" {...register('file' , {required: true} )} />
-            <button type="submit" className="bg-black text-white text-xl px-4 py-2 rounded-xl"> Upload </button>
+    <div className="bg-amber-300 m-auto w-lg h-32">
+        <form  className="mt-5 pt-6" onSubmit = { handleSubmit(onSubmit) } >
+            <input type="file" accept=".csv" className="bg-black text-white text-xl px-4 py-2 cursor-pointer rounded-xl mr-1" {...register('file' , {required: true} )} />
+            <button type="submit" className="bg-black text-white text-xl px-4 py-2 cursor-pointer rounded-xl"> Upload </button>
         </form>
     </div>
   )
