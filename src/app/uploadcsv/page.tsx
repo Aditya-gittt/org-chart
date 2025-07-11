@@ -9,26 +9,18 @@ function page() {
 
     const onSubmit = async (data: any) => {
 
-        console.log("\n\n this is data returned by use form \n") ;
-        console.log(data);
-        console.log("/n this is its type /n");
-        console.log(typeof data);
+        
 
         const formData = new FormData();
 
-        console.log("\n\n this is formData instance of FormData \n");
-        console.log(formData);
+        
 
         formData.append("orgchart-file" , data.file[0])
 
-        console.log("\n\n this is formData instance of FormData after appending \n");
-        console.log(formData);
 
         try{
-            const res = await axios.post("/api/backend" , formData);
+            const res = await axios.post("/api/backend" , formData) as [];
             
-            console.log("\n\n this the response object got from axios by hitting the backend with post request \n");
-            console.log(res)
         } catch(err) {
             console.log("\n\n error in hiting the backend \n")
             console.log(err);

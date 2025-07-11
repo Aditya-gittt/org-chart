@@ -12,14 +12,16 @@
     "@prisma/client": "^6.11.1",
     "@types/multer": "^2.0.0",
     "@types/papaparse": "^5.3.16",
+    "@xyflow/react": "^12.8.1",
     "axios": "^1.10.0",
     "multer": "^2.0.1",
     "next": "15.3.4",
+    "next-auth": "^4.24.11",
     "papaparse": "^5.5.3",
-    "prisma": "^6.11.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.59.0"
+    "react-hook-form": "^7.59.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

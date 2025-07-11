@@ -18,7 +18,8 @@ model User {
   name         String
   email        String @unique
   role         String
-  managerId    String
+  managerEmail String?
+  managerId    String?
   manager      User?  @relation("manager-subordinate-relationship", fields: [managerId], references: [id])
   subordinates User[] @relation("manager-subordinate-relationship")
 }
