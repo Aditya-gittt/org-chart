@@ -8,6 +8,10 @@ export const {
     signIn,
     signOut
 } = NextAuth({
+    pages: {
+        signIn: "/sign-in"
+    },
+
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -19,7 +23,7 @@ export const {
                 if(!credentials){
                     return null;
                 }
-                const result = dataByEmail(credentials.email);
+                const result = await dataByEmail(credentials.email);
                 return result;
             }
         })
