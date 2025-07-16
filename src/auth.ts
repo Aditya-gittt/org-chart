@@ -17,13 +17,13 @@ export const {
             name: "Credentials",
             credentials: {
                 email: {label: "Email" , type: "email"},
-                password: {label:"Password", typr: "password"}
+                password: {label:"Password", type: "password"}
             } ,
             async authorize(credentials) {
                 if(!credentials){
                     return null;
                 }
-                const result = await dataByEmail(credentials.email);
+                const result = await dataByEmail(credentials.email, credentials.password);
                 return result;
             }
         })

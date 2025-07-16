@@ -1,9 +1,10 @@
 import "server-only"
 import {prismaClient} from "@/db";
+import bcrypt from "bcryptjs";
 
-export async function dataByEmail(email: string) {
+export async function dataByEmail(email: string, checkPassword: string) {
     try{
-        const data = await prismaClient.user.findUnique({
+        const data = await prismaClient.verifiedUser.findUnique({
             where: {
             email: email
             }
@@ -12,7 +13,12 @@ export async function dataByEmail(email: string) {
         if(!data) {
             return null;
         }
-        const {managerEmail, managerId, ...restdata} = data;
+
+        if( !(await bcrypt.compare(checkPassword, data.password)) ) {
+            return null;
+        }
+
+        const {password, ...restdata} = data;
         return restdata;
 
     } catch (err) {
