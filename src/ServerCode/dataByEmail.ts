@@ -1,3 +1,4 @@
+import "server-only"
 import {prismaClient} from "@/db";
 
 export async function dataByEmail(email: string) {

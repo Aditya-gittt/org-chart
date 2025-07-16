@@ -14,12 +14,17 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(cuid())
+  id           String  @id @default(cuid())
   name         String
-  email        String @unique
+  email        String  @unique
   role         String
   managerEmail String?
   managerId    String?
-  manager      User?  @relation("manager-subordinate-relationship", fields: [managerId], references: [id])
-  subordinates User[] @relation("manager-subordinate-relationship")
+  manager      User?   @relation("manager-subordinate-relationship", fields: [managerId], references: [id])
+  subordinates User[]  @relation("manager-subordinate-relationship")
+}
+
+model VerifiedUser {
+  email    String @id
+  password String
 }
